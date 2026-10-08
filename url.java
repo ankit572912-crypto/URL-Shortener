@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class url {
 
-    // ==========================================
+    
     // Generate Random 6 Character Short ID
-    // ==========================================
+  
     public static String generateShortId() {
 
         String characters =
@@ -34,9 +34,8 @@ public class url {
     }
 
 
-    // ==========================================
     // Save One New URL
-    // ==========================================
+   
     public static void saveUrl(
             String shortId,
             String longUrl,
@@ -64,9 +63,8 @@ public class url {
     }
 
 
-    // ==========================================
     // Load URLs From File
-    // ==========================================
+    
     public static void loadUrls(
             HashMap<String, String> urlMap,
             HashMap<String, Integer> clickMap) {
@@ -126,10 +124,10 @@ public class url {
     }
 
 
-    // ==========================================
+   
     // Save All URLs Again
     // Used for Updating Click Count
-    // ==========================================
+ 
     public static void saveAllUrls(
             HashMap<String, String> urlMap,
             HashMap<String, Integer> clickMap) {
@@ -165,9 +163,8 @@ public class url {
     }
 
 
-    // ==========================================
     // Start HTTP Server
-    // ==========================================
+    
     public static void startServer(
             HashMap<String, String> urlMap,
             HashMap<String, Integer> clickMap) {
@@ -223,18 +220,18 @@ public class url {
                         }
 
 
-                        // ==================================
+                        
                         // Check Short ID
-                        // ==================================
+                      
                         if (urlMap.containsKey(shortId)) {
 
                             String originalUrl =
                                     urlMap.get(shortId);
 
 
-                            // ==================================
+                           
                             // Increase Click Count
-                            // ==================================
+                           
 
                             int clicks =
                                     clickMap.getOrDefault(
@@ -257,9 +254,9 @@ public class url {
                             );
 
 
-                            // ==================================
+                            
                             // Redirect to Original URL
-                            // ==================================
+                           
 
                             exchange.getResponseHeaders()
                                     .set(
@@ -275,9 +272,9 @@ public class url {
 
                         } else {
 
-                            // ==================================
+                            
                             // Short ID Not Found
-                            // ==================================
+                            
 
                             String response =
                                     "Short URL not found!";
@@ -335,15 +332,15 @@ public class url {
     }
 
 
-    // ==========================================
+   
     // MAIN METHOD
-    // ==========================================
+    
     public static void main(String[] args) {
 
 
-        // ==========================================
+       
         // HashMaps
-        // ==========================================
+        
 
         HashMap<String, String> urlMap =
                 new HashMap<>();
@@ -352,9 +349,9 @@ public class url {
                 new HashMap<>();
 
 
-        // ==========================================
+        
         // Load Previous URLs
-        // ==========================================
+        
 
         loadUrls(
                 urlMap,
@@ -362,9 +359,9 @@ public class url {
         );
 
 
-        // ==========================================
+        
         // Start Server
-        // ==========================================
+        
 
         startServer(
                 urlMap,
@@ -376,9 +373,9 @@ public class url {
                 new Scanner(System.in);
 
 
-        // ==========================================
+        
         // MENU
-        // ==========================================
+        
 
         while (true) {
 
@@ -417,9 +414,9 @@ public class url {
             int choice;
 
 
-            // ==========================================
+            
             // Convert Input to Integer
-            // ==========================================
+           
 
             try {
 
@@ -436,10 +433,10 @@ public class url {
             }
 
 
-            // ==========================================
+            
             // OPTION 1
             // Shorten URL
-            // ==========================================
+            
 
             if (choice == 1) {
 
@@ -451,9 +448,9 @@ public class url {
                         sc.nextLine().trim();
 
 
-                // ==================================
+                
                 // URL Validation
-                // ==================================
+                
 
                 if (!longUrl.startsWith("http://")
                         && !longUrl.startsWith("https://")) {
@@ -466,17 +463,17 @@ public class url {
                 }
 
 
-                // ==================================
+               
                 // Generate Short ID
-                // ==================================
+                
 
                 String shortId =
                         generateShortId();
 
 
-                // ==================================
+                
                 // Check Collision
-                // ==================================
+                
 
                 while (urlMap.containsKey(shortId)) {
 
@@ -485,9 +482,9 @@ public class url {
                 }
 
 
-                // ==================================
+                
                 // Store URL
-                // ==================================
+                
 
                 urlMap.put(
                         shortId,
@@ -500,9 +497,9 @@ public class url {
                 );
 
 
-                // ==================================
+                
                 // Save to File
-                // ==================================
+                
 
                 saveUrl(
                         shortId,
@@ -511,9 +508,9 @@ public class url {
                 );
 
 
-                // ==================================
+                
                 // Output
-                // ==================================
+                
 
                 System.out.println();
 
@@ -533,10 +530,9 @@ public class url {
             }
 
 
-            // ==========================================
+            
             // OPTION 2
             // Find Original URL
-            // ==========================================
 
             else if (choice == 2) {
 
@@ -596,10 +592,10 @@ public class url {
             }
 
 
-            // ==========================================
+           
             // OPTION 3
             // Statistics
-            // ==========================================
+            
 
             else if (choice == 3) {
 
